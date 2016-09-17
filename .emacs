@@ -7,6 +7,9 @@
     ("marmalade" . "https://marmalade-repo.org/packages/")
     ("melpa-stable" . "http://stable.melpa.org/packages/")))
 
+(add-to-list 'package-archives
+              '("melpa" . "https://melpa.org/packages/") t)
+(package-initialize)
 
 ;;To disable menu bar
 (menu-bar-mode -1) 
@@ -17,7 +20,7 @@
 ;; Python IDE settings
 (elpy-enable)
 (elpy-use-ipython)
-
+(add-to-list 'load-path "~/.emacs.d/elpa/")
 
 ;;;;org-mode configuration
 ;; Enable org-mode
@@ -41,6 +44,8 @@
 ;; Web mode
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+;; use web-mode for .jsx files
+(add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 (setq web-mode-markup-indent-offset 2)
 (setq web-mode-css-indent-offset 2)
@@ -67,16 +72,57 @@
               (lambda ()
                 (setq indent-line-function 'indent-relative)))
 
-;; load custome theame
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
-(load-theme 'blackboard t)
+
 ;; set Default font
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 (set-default-font "Inconsolata")
 (set-face-attribute 'default nil :height 130)
 
-;; For displaying line numbers
-(global-linum-mode t)
 
-;; Git-Gutter
-(global-git-gutter-mode +1)
+;; Keep emacs Custom-settings in separate file
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(load custom-file)
+
+
+(require 'multiple-cursors)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+
+;;
+;; ace jump mode major function
+;; 
+(load "~/.emacs.d/packages/ace-jump-mode.el")
+
+(require 'ace-jump-mode)
+(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+
+
+(add-to-list 'load-path "/home/ravi/.emacs.d/packages/emacs-neotree")
+(require 'neotree)
+(global-set-key [f8] 'neotree-toggle)
+
+;; custome key bindings
+(global-set-key (kbd "C-,") 'rgrep)
+(global-set-key (kbd "C-j") 'comment-region)
+(global-set-key (kbd "C-l") 'uncomment-region)
+
+;; load theme
+(add-to-list 'custom-theme-load-path "~/.emacs.d/elpa")
+(load-theme 'dracula t)
+(require 'smartparens-config)
+(smartparens-global-mode t)
+(global-set-key (kbd "C-M-a") 'sp-beginning-of-sexp)
+(global-set-key (kbd "C-M-e") 'sp-end-of-sexp)
+
+(add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
+
+(add-hook 'web-mode-hook
+  (lambda ()
+  (if (equal web-mode-content-type "javascript")
+  (web-mode-set-content-type "jsx")
+  (message "now set to: %s" web-mode-content-type))))
+
+(setq web-mode-content-types-alist
+  '(("jsx" . "\\.js[x]?\\'")))
