@@ -102,3 +102,20 @@ alias ae='source ../env/bin/activate'
 alias pml='python manage_local.py'
 alias pm='python manage.py'
 .zshrc
+
+
+#----------------
+# Android
+#----------------
+alias android='cd Android/Sdk/tools && ./android &'
+alias geny='cd sw/genymotion && ./genymotion &'
+alias rns='react-native start'
+alias rna='react-native run-android'
+alias rnl='react-native log-android'
+alias rnd='echo SUBSYSTEM=="usb", ATTR{idVendor}=="22b8", MODE="0666", GROUP="plugdev" | sudo tee /etc/udev/rules.d/51-android-usb.rules'
+alias rnclr='echo 256 | sudo tee -a /proc/sys/fs/inotify/max_user_instances; echo 32768 | sudo tee -a /proc/sys/fs/inotify/max_queued_events; echo 65536 | sudo $
+export ANDROID_HOME=~/Android/Sdk
+export PATH=${PATH}:${ANDROID_HOME}/tools
+export PATH=${PATH}:${ANDROID_HOME}/platform-tools
+
+REACT_EDITOR=sublime
