@@ -17,19 +17,25 @@
 ;; To disable the tool bar
 (tool-bar-mode -1) 
 
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (dracula-theme elpy neotree ace-jump-mode web-mode helm))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+
 ;; Python IDE settings
 (elpy-enable)
 (elpy-use-ipython)
 (add-to-list 'load-path "~/.emacs.d/elpa/")
-
-;;;;org-mode configuration
-;; Enable org-mode
-(require 'org)
-(global-set-key "\C-cl" 'org-store-link)
-(global-set-key "\C-ca" 'org-agenda)
-(global-set-key "\C-cc" 'org-capture)
-(global-set-key "\C-cb" 'org-iswitchb)
-(setq org-log-done t)
 
 
 ;; Helm configuration
@@ -78,27 +84,11 @@
 (set-default-font "Inconsolata")
 (set-face-attribute 'default nil :height 130)
 
-
-;; Keep emacs Custom-settings in separate file
-(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-(load custom-file)
-
-
-(require 'multiple-cursors)
-(global-set-key (kbd "C->") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
-
-;;
-;; ace jump mode major function
-;; 
-(load "~/.emacs.d/packages/ace-jump-mode.el")
-
 (require 'ace-jump-mode)
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 
 
-(add-to-list 'load-path "/home/ravi/.emacs.d/packages/emacs-neotree")
+;; (add-to-list 'load-path "/home/ravi/.emacs.d/packages/emacs-neotree")
 (require 'neotree)
 (global-set-key [f8] 'neotree-toggle)
 
@@ -107,8 +97,9 @@
 (global-set-key (kbd "C-j") 'comment-region)
 (global-set-key (kbd "C-l") 'uncomment-region)
 
+
 ;; load theme
-(add-to-list 'custom-theme-load-path "~/.emacs.d/elpa")
+;; (add-to-list 'custom-theme-load-path "~/.emacs.d/elpa")
 (load-theme 'dracula t)
 (require 'smartparens-config)
 (smartparens-global-mode t)
