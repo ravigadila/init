@@ -6,5 +6,5 @@
 # press on disable text(rightside) and  press.  Contrl+Shift+g # (to create new keybinding)
 # Now select text from any window/screen press Contrl+Shift+g.
 
-term=$( xclip -out )
-xdg-open https://google.com?q=$term
+term=`xclip -out`
+xdg-open https://google.com?q="$term"
