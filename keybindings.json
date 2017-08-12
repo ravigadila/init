@@ -1,0 +1,124 @@
+// VS-Code, emacs key map.
+[
+  {
+    "key": "alt+w",
+    "command": "editor.action.clipboardCopyAction",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+y",
+    "command": "editor.action.clipboardPasteAction",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+w",
+    "command": "editor.action.clipboardCutAction",
+    "when": "editorTextFocus"   
+  },
+  {
+    "key": "ctrl+alt+d",
+    "command": "editor.action.addSelectionToNextFindMatch",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+a",
+    "command": "cursorHome",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+e",
+    "command": "cursorEnd",
+    "when": "editorFocus"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "editor.action.deleteLines",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+x k",
+    "command": "workbench.action.closeActiveEditor",
+  },
+  {
+    "key": "ctrl+x ctrl+k",
+    "command": "workbench.action.closeAllEditors",
+  },
+  {
+    "key": "ctrl+L ctrl+F",
+    "command": "editor.action.formatSelection",
+    "when": "editorHasSelection"
+  },
+  {
+    "key": "ctrl+,",
+    "command": "cursorTop"
+  },
+  {
+    "key": "ctrl+.",
+    "command": "cursorBottom"
+  },
+  {
+    "key": "ctrl+v",
+    "command": "scrollPageDown"
+  },
+  {
+    "key": "alt+v",
+    "command": "scrollPageUp"
+  },
+  {
+    "key": "alt+x",
+    "command": "extension.aceJump"
+  },
+  {
+    "key": "alt+d",
+    "command": "deleteWordRight",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+delete",
+    "command": "-deleteWordRight",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "alt+d",
+    "command": "workbench.action.terminal.deleteWordRight",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+delete",
+    "command": "-workbench.action.terminal.deleteWordRight",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "alt+h",
+    "command": "deleteWordLeft",
+  },
+  {
+    "key": "ctrl+backspace",
+    "command": "-workbench.action.terminal.deleteWordLeft",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+D",
+    "command": "deleteRight",
+  },
+  {
+    "key": "ctrl+H",
+    "command": "deleteLeft",
+  },
+  {
+    "key": "ctrl+N",
+    "command": "cursorDown",
+  },
+  {
+    "key": "ctrl+P",
+    "command": "cursorUp",
+  },
+  {
+    "key": "ctrl+alt+a",
+    "command": "editor.action.selectAll"
+  },
+  {
+    "key": "ctrl+a",
+    "command": "-editor.action.selectAll"
+  }
+]
